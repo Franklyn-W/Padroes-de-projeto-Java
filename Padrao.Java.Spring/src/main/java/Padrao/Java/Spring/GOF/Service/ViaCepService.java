@@ -1,0 +1,16 @@
+package Padrao.Java.Spring.GOF.Service;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import Padrao.Java.Spring.GOF.Model.Endereco;
+
+
+
+@FeignClient(name = "viacep", url = "viacep.com.br/ws")
+public interface ViaCepService {
+    
+    @GetMapping("/{cep}/json/")
+    Endereco consultarCep(@PathVariable("cep")String cep);
+
+}
